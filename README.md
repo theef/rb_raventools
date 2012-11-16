@@ -1,4 +1,4 @@
-# RbRaventools
+# rb_raventools
 
 TODO: Write a gem description
 

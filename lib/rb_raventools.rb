@@ -1,5 +1,5 @@
 require "rb_raventools/version"
 
-module RbRaventools
+module RavenTools
   # Your code goes here...
 end

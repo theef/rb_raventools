@@ -7,9 +7,9 @@ Gem::Specification.new do |gem|
   gem.name          = "rb_raventools"
   gem.version       = RbRaventools::VERSION
   gem.authors       = ["Kevin Wanek"]
-  gem.email         = ["kevin@ravedemocracy.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.email         = ["kdub@itriagehealth.com"]
+  gem.description   = %q{Use the RavenTools SEO API to retrieve any account, domain, keyword related information offered.}
+  gem.summary       = %q{An unofficial ruby wrapper for the RavenTools SEO API. Requires an account with RavenTools and an API Key.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
