@@ -5,7 +5,7 @@ require 'rb_raventools/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "rb_raventools"
-  gem.version       = RbRaventools::VERSION
+  gem.version       = RavenTools::VERSION
   gem.authors       = ["Kevin Wanek"]
   gem.email         = ["kdub@itriagehealth.com"]
   gem.description   = %q{Use the RavenTools SEO API to retrieve any account, domain, keyword related information offered.}
@@ -16,4 +16,6 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+  
+  gem.add_dependency 'json'
 end

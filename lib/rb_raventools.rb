@@ -1,5 +1,6 @@
-require "rb_raventools/version"
+require 'rb_raventools/version'
+require 'rb_raventools/client'
 
 module RavenTools
-  # Your code goes here...
+  
 end
