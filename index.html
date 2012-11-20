@@ -31,7 +31,49 @@
         <hr>
 
         <section id="main_content">
-          <p>I need to build out this page...</p>
+          <h1>Working with RavenTools:</h1>
+
+<p><a href="https://raven.zendesk.com/entries/243600-raven-api">Generating a RavenTools API Key</a></p>
+
+<p><a href="https://api.raventools.com/docs/">RavenTools API Documentation</a></p>
+
+<h1>Using rb_raventools</h1>
+
+<h2>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'rb_raventools'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install rb_raventools
+</code></pre>
+
+<h2>Setup</h2>
+
+<p>Once 'rb_raventools' is in your project, simply setup a RavenTools api client:</p>
+
+<pre><code>client = RavenTools::Client.new("INSERT_YOUR_API_KEY")
+</code></pre>
+
+<p>and from there, you can perform method calls like:</p>
+
+<pre><code>domains = client.get_domains
+</code></pre>
+
+<p>or specify options / parameters such as:</p>
+
+<pre><code>keywords = client.get_keywords("DOMAIN_NAME", { format: "xml" })
+</code></pre>
+
+<h1>still updating docs...</h1>
         </section>
 
         <footer>
