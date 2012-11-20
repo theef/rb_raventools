@@ -68,11 +68,6 @@
 <div class="highlight"><pre>    <span class="n">domains</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">domains</span>
 </pre></div>
 
-<p>or specify options / parameters such as:</p>
-
-<div class="highlight"><pre>    <span class="n">keywords</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keywords</span><span class="p">(</span><span class="s2">"DOMAIN_NAME"</span><span class="p">,</span> <span class="p">{</span> <span class="nb">format</span><span class="p">:</span> <span class="s2">"xml"</span> <span class="p">})</span>
-</pre></div>
-
 <h1>Methods</h1>
 
 <h2>Domains</h2>
@@ -82,7 +77,7 @@
 <div class="highlight"><pre>    <span class="n">domains</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">domains</span>
 </pre></div>
 
-<p>This method does not require additional parameters or options.</p>
+<p>This method does not accept additional parameters or options.</p>
 
 <h4>Sample Response</h4>
 
@@ -90,6 +85,40 @@
 
 <div class="highlight"><pre>    <span class="c1"># domains = client.domains</span>
     <span class="o">[</span><span class="s2">"example1.com"</span><span class="p">,</span> <span class="s2">"sub.example1.com"</span><span class="p">,</span> <span class="s2">"example2.org"</span><span class="o">]</span>
+</pre></div>
+
+<h2>Profile Information</h2>
+
+<p>To retrieve available profile information:</p>
+
+<div class="highlight"><pre>    <span class="n">profile</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">profile_info</span>
+</pre></div>
+
+<p>This method does not accept additional parameters or options.</p>
+
+<h4>Sample Response</h4>
+
+<p>Output will be a hash of values containing profile information (name, # of keywords).</p>
+
+<div class="highlight"><pre>    <span class="c1"># profile = client.profile_info</span>
+    <span class="p">{</span><span class="s2">"name"</span><span class="o">=&gt;</span><span class="s2">"Example Profile"</span><span class="p">,</span> <span class="s2">"keyword_usage"</span><span class="o">=&gt;</span><span class="s2">"1000"</span><span class="p">}</span>
+</pre></div>
+
+<h2>Engines</h2>
+
+<p>To retrieve all available Search Engines:</p>
+
+<div class="highlight"><pre>    <span class="n">engines</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">engines</span>
+</pre></div>
+
+<p>This method does not accept additional parameters or options.</p>
+
+<h4>Sample Response</h4>
+
+<p>Output will be an array of hash of values containing engine information (id, engine name).</p>
+
+<div class="highlight"><pre>    <span class="c1"># engines = client.engines</span>
+    <span class="o">[</span><span class="p">{</span><span class="s2">"id"</span><span class="o">=&gt;</span><span class="s2">"93"</span><span class="p">,</span> <span class="s2">"name"</span><span class="o">=&gt;</span><span class="s2">"Yahoo! GR"</span><span class="p">},</span> <span class="p">{</span><span class="s2">"id"</span><span class="o">=&gt;</span><span class="s2">"94"</span><span class="p">,</span> <span class="s2">"name"</span><span class="o">=&gt;</span><span class="s2">"Bing NL"</span><span class="p">}</span><span class="o">]</span>
 </pre></div>
 
 <h1>still updating docs...</h1>
