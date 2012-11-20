@@ -1,7 +1,8 @@
 module RavenTools
 
-  require 'json'
   require 'httparty'
+  require 'json'
+  require 'nokogiri'
   
   class Client
 
@@ -9,21 +10,47 @@ module RavenTools
     
     def initialize(api_key)
       self.api_key = api_key
-      @format = "json"
     end
 
-    def get_domains
+    def get_domains(options={})
+      format = options[:format] ||= "json"
       method = "domains"
-      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&format=#{@format}&method=#{method}"
+      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&format=#{format}&method=#{method}"
       response = HTTParty.get(raven_url)
-      return response.body
+      if format == "xml"
+        parsed_response = Nokogiri::XML(response.body).domains_to_hash
+      else
+        parsed_response = JSON.parse(response.body)
+      end
+      return parsed_response
     end
     
-    def get_keywords(domain)
+    def get_keywords(domain, options={})
       method = "keywords"
       raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&domain=#{domain}&format=#{@format}&method=#{method}"
       response = HTTParty.get(raven_url)
-      return response.body
+      return response
+    end
+    
+    def get_engines(options={})
+      method = "engines"
+      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@format}"
+      response = HTTParty.get(raven_url)
+      response.body
+    end
+    
+    def get_profile(options={})
+      method = "profile_info"
+      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@format}"
+      response = HTTParty.get(raven_url)
+      response.body
+    end
+    
+    def get_domain_info(domain, options={})
+      method = "domain_info"
+      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@format}&domain=#{domain}"
+      response = HTTParty.get(raven_url)
+      response.body
     end
   
   end
