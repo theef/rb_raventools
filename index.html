@@ -60,18 +60,37 @@
 
 <p>Once 'rb_raventools' is in your project, simply setup a RavenTools api client:</p>
 
-<pre><code>client = RavenTools::Client.new("INSERT_YOUR_API_KEY")
-</code></pre>
+<div class="highlight"><pre>    <span class="n">client</span> <span class="o">=</span> <span class="no">RavenTools</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"INSERT_YOUR_API_KEY"</span><span class="p">)</span>
+</pre></div>
 
 <p>and from there, you can perform method calls like:</p>
 
-<pre><code>domains = client.get_domains
-</code></pre>
+<div class="highlight"><pre>    <span class="n">domains</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">domains</span>
+</pre></div>
 
 <p>or specify options / parameters such as:</p>
 
-<pre><code>keywords = client.get_keywords("DOMAIN_NAME", { format: "xml" })
-</code></pre>
+<div class="highlight"><pre>    <span class="n">keywords</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keywords</span><span class="p">(</span><span class="s2">"DOMAIN_NAME"</span><span class="p">,</span> <span class="p">{</span> <span class="nb">format</span><span class="p">:</span> <span class="s2">"xml"</span> <span class="p">})</span>
+</pre></div>
+
+<h1>Methods</h1>
+
+<h2>Domains</h2>
+
+<p>To find all domains connected to a particular account (as defined by the API Key), simply use:</p>
+
+<div class="highlight"><pre>    <span class="n">domains</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">domains</span>
+</pre></div>
+
+<p>This method does not require additional parameters or options.</p>
+
+<h4>Sample Response</h4>
+
+<p>Output will be an array of strings, containing all domains available.</p>
+
+<div class="highlight"><pre>    <span class="c1"># domains = client.domains</span>
+    <span class="o">[</span><span class="s2">"example1.com"</span><span class="p">,</span> <span class="s2">"sub.example1.com"</span><span class="p">,</span> <span class="s2">"example2.org"</span><span class="o">]</span>
+</pre></div>
 
 <h1>still updating docs...</h1>
         </section>
