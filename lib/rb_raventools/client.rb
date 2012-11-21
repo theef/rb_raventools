@@ -15,56 +15,61 @@ module RavenTools
     
     def profile_info
       method = "profile_info"
-      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@@format}"
-      response = HTTParty.get(raven_url)
-      parsed_response = JSON.parse(response.body)
+      response = HTTParty.get(RavenTools::Address.build(method))
       return parsed_response
     end
     
     def engines
       method = "engines"
-      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@@format}"
-      response = HTTParty.get(raven_url)
+      response = HTTParty.get(RavenTools::Address.build(method))
       parsed_response = JSON.parse(response.body)
       return parsed_response
     end
 
     def domains
       method = "domains"
-      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@@format}"
-      response = HTTParty.get(raven_url)
+      response = HTTParty.get(RavenTools::Address.build(method))
       parsed_response = JSON.parse(response.body)
       return parsed_response
     end
     
     def domain_info(domain)
       method = "domain_info"
-      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@@format}&domain=#{domain}"
-      response = HTTParty.get(raven_url)
+      response = HTTParty.get(RavenTools::Address.build(method, { domain: domain }))
       parsed_response = JSON.parse(response.body)
       return parsed_response
     end
     
     def keywords(domain)
       method = "keywords"
-      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@@format}&domain=#{domain}"
-      response = HTTParty.get(raven_url)
+      response = HTTParty.get(RavenTools::Address.build(method, { domain: domain }))
       parsed_response = JSON.parse(response.body)
       return parsed_response
     end
     
+    def keyword_info(domain, keyword)
+      method = "keywords_tags"
+      response = HTTParty.get(RavenTools::Address.build(method, { domain: domain }))
+      parsed_response = JSON.parse(response.body)
+      keyword_info = [{ keyword: keyword }]
+      parsed_response.each do |keywords|
+        if keywords['keyword'] == keyword
+          keyword_info << { tags: keywords['tags'].to_a }
+        end
+      end
+      return keyword_info
+    end
+    
     def keywords_with_tags(domain)
       method = "keywords_tags"
-      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@@format}&domain=#{domain}"
-      response = HTTParty.get(raven_url)
+      response = HTTParty.get(RavenTools::Address.build(method, { domain: domain }))
       parsed_response = JSON.parse(response.body)
       return parsed_response
     end
     
     def tags(domain)
       method = "keywords_tags"
-      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@@format}&domain=#{domain}"
-      response = HTTParty.get(raven_url)
+      response = HTTParty.get(RavenTools::Address.build(method, { domain: domain }))
       parsed_response = JSON.parse(response.body)
       tags = []
       parsed_response.each do |keywords|
@@ -82,8 +87,7 @@ module RavenTools
     
     def tag_info(domain, tag)
       method = "keywords_tags"
-      raven_url = "#{RavenTools::API_BASE_URL}key=#{self.api_key}&method=#{method}&format=#{@@format}&domain=#{domain}"
-      response = HTTParty.get(raven_url)
+      response = HTTParty.get(RavenTools::Address.build(method, { domain: domain }))
       parsed_response = JSON.parse(response.body)
       tag_info = [{ tag: tag }]
       keyword_list = []
