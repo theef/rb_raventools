@@ -31,13 +31,13 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>Working with RavenTools:</h1>
+        <p>last updated:  November 20, 2012</p>
+
+<h1>Working with RavenTools:</h1>
 
 <p><a href="https://raven.zendesk.com/entries/243600-raven-api">Generating a RavenTools API Key</a></p>
 
 <p><a href="https://api.raventools.com/docs/">RavenTools API Documentation</a></p>
-
-<h1>Using rb_raventools</h1>
 
 <h2>Installation</h2>
 
@@ -155,7 +155,24 @@
     <span class="o">[</span><span class="s2">"example 1"</span><span class="p">,</span> <span class="s2">"test key2"</span><span class="p">,</span> <span class="s2">"example 2"</span><span class="p">,</span> <span class="s2">"another keyword"</span><span class="o">]</span>
 </pre></div>
 
-<h1>still updating docs...</h1>
+<h2>Keywords with Tags</h2>
+
+<p>To to find all Keywords and their Tags associated with your account:</p>
+
+<div class="highlight"><pre>    <span class="n">keywords</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keywords_with_tags</span><span class="p">(</span><span class="s2">"INSERT_DOMAIN_HERE"</span><span class="p">)</span>
+</pre></div>
+
+<p>This method requires a "domain" parameter, which must be a registered domain for your account.  To retrieve these available domains, see the Domains Method above.</p>
+
+<h4>Sample Response</h4>
+
+<p>Output will be an array of all keywords as hashes with the keyword name and associated tags, with the tags value being an array of strings.</p>
+
+<div class="highlight"><pre>    <span class="c1"># keywords = client.keywords_with_tags("example1.com")</span>
+    <span class="o">[</span><span class="p">{</span><span class="s2">"keyword"</span><span class="o">=&gt;</span><span class="s2">"example keyword"</span><span class="p">,</span> <span class="s2">"tags"</span><span class="o">=&gt;[</span><span class="s2">"example tag 1"</span><span class="p">,</span> <span class="s2">"example tag 2"</span><span class="o">]</span><span class="p">}</span><span class="o">]</span>
+</pre></div>
+
+<hr><h1>still updating docs...</h1>
       </section>
     </div>
 
