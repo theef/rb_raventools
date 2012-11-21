@@ -14,37 +14,28 @@ module RavenTools
     end
     
     def profile_info
-      method = "profile_info"
-      response = HTTParty.get(RavenTools::Address.build(method))
-      return parsed_response
+      response = HTTParty.get(RavenTools::Address.build("profile_info"))
+      JSON.parse(response.body)
     end
     
     def engines
-      method = "engines"
-      response = HTTParty.get(RavenTools::Address.build(method))
-      parsed_response = JSON.parse(response.body)
-      return parsed_response
+      response = HTTParty.get(RavenTools::Address.build("engines"))
+      JSON.parse(response.body)
     end
 
     def domains
-      method = "domains"
-      response = HTTParty.get(RavenTools::Address.build(method))
-      parsed_response = JSON.parse(response.body)
-      return parsed_response
+      response = HTTParty.get(RavenTools::Address.build("domains"))
+      JSON.parse(response.body)
     end
     
     def domain_info(domain)
-      method = "domain_info"
-      response = HTTParty.get(RavenTools::Address.build(method, { domain: domain }))
-      parsed_response = JSON.parse(response.body)
-      return parsed_response
+      response = HTTParty.get(RavenTools::Address.build("domain_info", { domain: domain }))
+      JSON.parse(response.body)
     end
     
     def keywords(domain)
-      method = "keywords"
-      response = HTTParty.get(RavenTools::Address.build(method, { domain: domain }))
-      parsed_response = JSON.parse(response.body)
-      return parsed_response
+      response = HTTParty.get(RavenTools::Address.build("keywords", { domain: domain }))
+      JSON.parse(response.body)
     end
     
     def keyword_info(domain, keyword)
@@ -61,10 +52,8 @@ module RavenTools
     end
     
     def keywords_with_tags(domain)
-      method = "keywords_tags"
-      response = HTTParty.get(RavenTools::Address.build(method, { domain: domain }))
-      parsed_response = JSON.parse(response.body)
-      return parsed_response
+      response = HTTParty.get(RavenTools::Address.build("keywords_tags", { domain: domain }))
+      JSON.parse(response.body)
     end
     
     def tags(domain)
