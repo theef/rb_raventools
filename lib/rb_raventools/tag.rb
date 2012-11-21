@@ -27,6 +27,12 @@ module RavenTools
       end
       tag_info << { keywords: keyword_list }
       return tag_info
+      
+    rescue Exception => e
+      puts e.message
+      if e.message == "uninitialized class variable @@api_key in RavenTools::Tag"
+        puts 'You must create a new RavenTools::Client with an API Key'
+      end
     end
     
     def keywords
