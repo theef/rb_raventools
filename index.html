@@ -172,6 +172,40 @@
     <span class="o">[</span><span class="p">{</span><span class="s2">"keyword"</span><span class="o">=&gt;</span><span class="s2">"example keyword"</span><span class="p">,</span> <span class="s2">"tags"</span><span class="o">=&gt;[</span><span class="s2">"example tag 1"</span><span class="p">,</span> <span class="s2">"example tag 2"</span><span class="o">]</span><span class="p">}</span><span class="o">]</span>
 </pre></div>
 
+<h2>Tags</h2>
+
+<p>To to find all Tags associated with a domain (aggregated through Keywords with Tags).  This aggregates an array of UNIQUE Tags:</p>
+
+<div class="highlight"><pre>    <span class="n">tags</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">tags</span><span class="p">(</span><span class="s2">"INSERT_DOMAIN_HERE"</span><span class="p">)</span>
+</pre></div>
+
+<p>This method requires a "domain" parameter, which must be a registered domain for your account.  To retrieve these available domains, see the Domains Method above.</p>
+
+<h4>Sample Response</h4>
+
+<p>Output will be an array of strings, containing all unique Tags.</p>
+
+<div class="highlight"><pre>    <span class="c1"># tags = client.tags("INSERT_DOMAIN_HERE")</span>
+    <span class="o">[</span><span class="s2">"tag one"</span><span class="p">,</span> <span class="s2">"tag2"</span><span class="p">,</span> <span class="s2">"tag_three"</span><span class="p">,</span> <span class="s2">"tag 4"</span><span class="p">,</span> <span class="s2">"tag five"</span><span class="o">]</span>
+</pre></div>
+
+<h2>Tag Information</h2>
+
+<p>To to find all Keywords associated with a given Tag:</p>
+
+<div class="highlight"><pre>    <span class="n">tag</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">tag_info</span><span class="p">(</span><span class="s2">"INSERT_DOMAIN_HERE"</span><span class="p">,</span> <span class="s2">"INSERT_TAG_NAME"</span><span class="p">)</span>
+</pre></div>
+
+<p>This method requires a "domain" parameter and a "tag" parameter.  The domain parameter must be a domain associated with your account. To retrieve available domains, see the Domains Method above.  The Tag parameter should be a Tag that is associated with a Keyword within the Domain specified.  If it is not a valid Tag, or it isn't found, 'nil' will be returned.</p>
+
+<h4>Sample Response</h4>
+
+<p>Output will be an array with two values:  'Tag', which is the name of the Tag provided, and 'Keywords' as an array of strings containing all Keyword names that have the specified Tag associated with them.</p>
+
+<div class="highlight"><pre>    <span class="c1"># tag = client.tag_info("INSERT_DOMAIN_HERE", "INSERT_TAG_NAME")</span>
+    <span class="o">[</span><span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"example_tag"</span><span class="p">},</span> <span class="p">{</span><span class="ss">:keywords</span><span class="o">=&gt;[</span><span class="s2">"keyword1"</span><span class="p">,</span> <span class="s2">"key_word2"</span><span class="o">]</span><span class="p">}</span><span class="o">]</span>
+</pre></div>
+
 <hr><h1>still updating docs...</h1>
       </section>
     </div>
